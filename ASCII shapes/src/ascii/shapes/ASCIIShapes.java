@@ -8,7 +8,6 @@ package ascii.shapes;
 import java.util.Scanner;
 
 /**
- *
  * @author tbrad_000
  */
 public class ASCIIShapes {
@@ -18,7 +17,7 @@ public class ASCIIShapes {
      */
     public static void main(String[] args) {
         BuildShapes build = new BuildShapes();
-        
+
         build.buildShapes();
     }
 

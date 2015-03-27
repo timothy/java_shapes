@@ -8,50 +8,45 @@ package ascii.shapes;
 import java.util.Scanner;
 
 /**
- *
  * @author tbrad_000
  */
 public class BuildShapes {
 
+    Goodinput input = new Goodinput();
+
     public void question() {
         System.out.print("Would you like to build another shape?\n");
 
-        try {
-            String s = new Scanner(System.in).nextLine().toLowerCase();
+        String s = input.stringClean().toLowerCase();
 
-            switch (s) {
-                case "y":
-                case "ya":
-                case "yes":
-                case "sure":
-                case "ok":
-                case "I want to go again":
-                case "lets keep going":
-                case "sounds good":
-                    buildShapes();
-                    break;
-                case "n":
-                case "not right now":
-                case "no":
-                case "nop":
-                case "done":
-                case "i am done":
-                    System.out.print("I hope you had fun!! Good Bye ^_^\n");
-                    break;
-                default:
-                    System.out.print("^_^ try something like \"yes\" or \"no\" ^_^\n");
-                    question();
-                    break;
-            }
-        } catch (Exception e) {
-            System.out.print("something went wrong? Try again!\n");
-            question();
+        switch (s) {
+            case "y":
+            case "ya":
+            case "yes":
+            case "sure":
+            case "ok":
+            case "I want to go again":
+            case "lets keep going":
+            case "sounds good":
+                buildShapes();
+                break;
+            case "n":
+            case "not right now":
+            case "no":
+            case "nop":
+            case "done":
+            case "i am done":
+                System.out.print("I hope you had fun!! Good Bye ^_^\n");
+                break;
+            default:
+                System.out.print("^_^ try something like \"yes\" or \"no\" ^_^\n");
+                question();
+                break;
         }
     }
 
     public void buildShapes() {
         Shapes shape = new Shapes();
-        Goodinput input = new Goodinput();
 
         shape.shapeMessage();
 

@@ -13,6 +13,8 @@ import java.util.Scanner;
  */
 public class Goodinput {
 
+    public Goodinput(){}
+    
     public String stringClean() {
         while (true) {
             try {

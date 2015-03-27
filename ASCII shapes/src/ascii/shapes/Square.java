@@ -15,20 +15,10 @@ public class Square extends Shapes {
         super();
         super.shape = "square";
     }
-/**
- * 
- * @param body what the shape is made out of
- * @param line where the label shows up
- * @param label what label is to be shown
- * @param shape the shape to be shown
- */
-    Square(char body, int line, String label, String shape) {
-        super(body, line, label, shape);
-    }
-/**
- * 
- * @return returns a string of the shape square
- */
+
+    /**
+     * @return returns a string of the shape square
+     */
     @Override
     public String toString() {
         String s = "";
@@ -64,7 +54,6 @@ public class Square extends Shapes {
                 s += "\n" + temp;
             }
         }
-
         return s + "\n";
     }
 }

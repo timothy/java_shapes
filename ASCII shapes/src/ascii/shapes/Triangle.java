@@ -5,23 +5,10 @@
  */
 package ascii.shapes;
 
-import java.util.ArrayList;
-
 /**
- *
  * @author tbrad_000
  */
-class TriangleException extends Exception {
 
-    //Parameterless Constructor
-    public TriangleException() {
-    }
-
-    //Constructor that accepts a message
-    public TriangleException(String message) {
-        super(message);
-    }
-}
 
 public class Triangle extends Shapes {
 
@@ -31,31 +18,6 @@ public class Triangle extends Shapes {
     }
 
     /**
-     *
-     * @param body what the shape is made out of
-     * @param line where the label shows up
-     * @param label what label is to be shown
-     * @param shape the shape to be shown
-     */
-    Triangle(char body, int line, String label, String shape) {
-        super(body, line, label, shape);
-    }
-//    Triangle(char body, int line, String label, String shape) {
-//        super(body, line, label, shape);
-//        try {
-//            if (label.length() > line) {
-//                throw new TriangleException();
-//            } else {
-//
-//            }
-//        } catch (TriangleException ex) {
-//            System.out.println("Both height and width need to be greater than or eqaul 0 to form a Rectangle\n");
-//        }
-//
-//    }
-
-    /**
-     *
      * @param height this is the total height of the shape
      * @param width this is the current height of the shape
      * @return this is a string that holds blank space to center the shape
@@ -68,9 +30,7 @@ public class Triangle extends Shapes {
         }
         return s;
     }
-
     /**
-     *
      * @return The string of the shape
      */
     @Override
