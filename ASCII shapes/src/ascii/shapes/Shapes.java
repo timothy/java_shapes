@@ -61,8 +61,9 @@ public class Shapes {
 
     /**
      *
-     * @param width this is the height of the body of square, triangle and half height for diamond
-     * 
+     * @param width this is the height of the body of square, triangle and half
+     * height for diamond
+     *
      * @return This will return a string to be put on each side of the label
      */
     protected String halfBody(int width) {
@@ -92,29 +93,25 @@ public class Shapes {
         return body;
     }
 
+    public void bodyMessage() {
+        System.out.print("Please give me the character you would like me to build your shape with.\n");
+    }
+
     /**
-     * body the body to set this creates the body of the shape and prints it out
+     *
+     * @param newBody this is a char that the body of the shape will be made out
+     * of
      */
-    public void setBody() {
-        char body = 'X';
-
-        System.out.print("What character would you like your shape to be made out of?\n");
-        while (true) {
-            try {
-                Scanner input = new Scanner(System.in); // I usaully would not create on obect in a loop
-                //but This input method is very different then the Console.ReadLine and cout methods I am used to.
-                //I cannot figure out why input.nextLine() will only work once when Scanner input = new Scanner(System.in); is outside of the loop.
-                body = input.next().charAt(0);
-                if (body == ' ') {
-                    this.body = 'X';
-                } else {
-                    this.body = body;
-                }
-                break;
-            } catch (Exception e) {
-                System.out.print("There is somthing worng with this input please try again\n");
-
+    public void setBody(char newBody) {
+        try {
+            if (body == ' ') {
+                this.body = 'X';
+            } else {
+                this.body = newBody;
             }
+        } catch (Exception e) {
+            System.out.print("There is something wrong with this input please give me a different character again\n");
+            setBody(new Scanner(System.in).next().charAt(0));
         }
     }
 
@@ -125,33 +122,28 @@ public class Shapes {
         return shape;
     }
 
+    public void shapeMessage() {
+        System.out.print("What shape would you like to print?\n");
+    }
+
     /**
      * the shape to set
      */
-    public void setShape() {
-        System.out.print("What shape would you like to print?\n");
-        String s = "";
-        while (true) {
+    public void setShape(String s) {
+        try {
+            if ("diamond".equals(s) || "square".equals(s) || "triangle".equals(s)) {
+                this.shape = s;
 
-            try {
-                Scanner input = new Scanner(System.in); // I usaully would not create on obect in a loop
-                //but This input method is very different then the Console.ReadLine and cout methods I am used to.
-                //I cannot figure out why input.nextLine() will only work once when Scanner input = new Scanner(System.in); is outside of the loop.
-                s = input.nextLine().toLowerCase();
-                if ("diamond".equals(s) || "square".equals(s) || "triangle".equals(s)) {
-                    this.shape = s;
-                    break;
-                } else {
-                    throw new ShapeException();
-                }
-            } catch (ShapeException ex) {
-                System.out.printf("The shape of " + s + " is not a valid shape\nplease enter one of the following shapes\n"
-                        + "   Diamond\n   Square\n   Triangle\n");
-
-            } catch (Exception e) {
-                System.out.print("There is somthing worng with this input please try again\n");
-
+            } else {
+                throw new ShapeException();
             }
+        } catch (ShapeException ex) {
+            System.out.printf("The shape of " + s + " is not a valid shape\nplease enter one of the following shapes\n"
+                    + "   Diamond\n   Square\n   Triangle\n");
+            setShape(new Scanner(System.in).nextLine().toLowerCase());
+        } catch (Exception e) {
+            System.out.print("There is somthing worng with this input please enter shape again\n");
+            setShape(new Scanner(System.in).nextLine().toLowerCase());
         }
     }
 
@@ -162,35 +154,28 @@ public class Shapes {
         return height;
     }
 
+    public void heightMessage() {
+        System.out.print("Please enter the height you would like your shape to be\n");
+    }
+
     /**
      * this lets the user set the height
      */
-    public void setHeight() {
-        System.out.print("Please enter the height you would like your shape to be\n");
-        int height = 4;
-
-        while (true) {
-            try {
-                Scanner input = new Scanner(System.in); // I usaully would not create on obect in a loop
-                //but This input method is very different then the Console.ReadLine and cout methods I am used to.
-                //I cannot figure out why input.nextLine() will only work once when Scanner input = new Scanner(System.in); is outside of the loop.
-                height = input.nextInt();
-
-                if (height < 0 || height == 1 || height > 250) {
-                    throw new ShapeException();
-                } else if (height == 0) {
-                    this.height = 10;
-                } else {
-                    this.height = height;
-                    break;
-                }
-            } catch (ShapeException ex) {
-                System.out.printf("The height of %d is too small or too large\nPlease try something bigger than 1 and less than 250\n", height);
-
-            } catch (Exception e) {
-                System.out.print("There is somthing worng with this input please try again\n");
-
+    public void setHeight(int height) {
+        try {
+            if (height < 0 || height == 1 || height > 250) {
+                throw new ShapeException();
+            } else if (height == 0) {
+                this.height = 10;
+            } else {
+                this.height = height;
             }
+        } catch (ShapeException ex) {
+            System.out.printf("The height of %d is too small or too large\nPlease try something bigger than 1 and less than 250\n", height);
+            setHeight(new Scanner(System.in).nextInt());
+        } catch (Exception e) {
+            System.out.print("There is somthing worng with this input please try again\n");
+            setHeight(new Scanner(System.in).nextInt());
         }
     }
 
@@ -201,36 +186,33 @@ public class Shapes {
         return line;
     }
 
+    public void lineMessage() {
+        System.out.print("What line would you like your label to show up on?\n");
+    }
+
     /**
-     * this lets the user set what line the label will show up on
+     *
+     * @param line set the line the label will show up on
      */
-    public void setLine() {
-        int line = 10;
-
-        System.out.print("What line would you like your label to show on?\n");
-        while (true) {
-            try {
-                Scanner input = new Scanner(System.in); // I usaully would not create on obect in a loop
-                //but This input method is very different then the Console.ReadLine and cout methods I am used to.
-                //I cannot figure out why input.nextLine() will only work once when Scanner input = new Scanner(System.in); is outside of the loop.
-                line = input.nextInt();
-                if ("diamond".equals(this.shape) && height == (line + 1))// for some reason "diamond".equals(this.shape) is not working
-                {
-                    throw new DiamondException();
-
-                } else if (line > this.height || line < 0) {
-                    throw new ShapeException();
-                } else {
-                    this.line = line;
-                    break;
-                }
-            } catch (ShapeException ex) {
-                System.out.printf("This shape does not have %d lines\nTry something smaller than %d\n", line, this.height);
-            } catch (DiamondException d) {
-                System.out.print("as you get closer to the top of a diamond it gets smaller this is the tip of your label try a smaller line\n");
-            } catch (Exception e) {
-                System.out.print("There is somthing worng with this input please try again\n");
+    public void setLine(int line) {
+        try {
+            if ("diamond".equals(this.shape) && height >= line)
+            {
+                throw new DiamondException();
+            } else if (line > this.height || line < 0) {
+                throw new ShapeException();
+            } else {
+                this.line = line;
             }
+        } catch (ShapeException ex) {
+            System.out.printf("This shape does not have %d lines\nTry something smaller than %d\n", line, this.height);
+            setLine(new Scanner(System.in).nextInt());
+        } catch (DiamondException d) {
+            System.out.print("as you get closer to the top of a diamond it gets smaller this is the tip of your label try a smaller line\n");
+            setLine(new Scanner(System.in).nextInt());
+        } catch (Exception e) {
+            System.out.print("There is somthing worng with this input. make sure you enter a positive number\n");
+            setLine(new Scanner(System.in).nextInt());
         }
     }
 
@@ -241,47 +223,38 @@ public class Shapes {
         return label;
     }
 
-    /**
-     * this lets the user set the label
-     */
-    public void setLabel() {
-        String label = "LU";
+    public void labelMessage() {
         System.out.print("What label would you like?\n");
-        int test = height - line;
-      int halfHeight = height /2;
-      int size = label.length();
-      String is = this.getShape();
-        while (true) {
-            try {
-                Scanner input = new Scanner(System.in); // I usaully would not create on obect in a loop
-                //but This input method is very different then the Console.ReadLine and cout methods I am used to.
-                //I cannot figure out why input.nextLine() will only work once when Scanner input = new Scanner(System.in); is outside of the loop.
-                label = input.nextLine();
-                size = label.length();
-
-                if ("diamond".equals(this.getShape()) && line > halfHeight && label.length() > test)//this if statment is not being hit.. I think it is because ("diamond".equals(this.shape)
-                // its should stop the user from putting labels that are too big for the line in diamond...
-                {
-                    throw new DiamondException();
-                } else if (label.length() > line) {
-                    throw new ShapeException();
-                } else if (label.equals(" ") || label.equals("") || label.toLowerCase().equals("default")) {
-                    this.label = "LU";
-                    break;
-                } else {
-                    this.label = label;
-                    break;
-                }
-            } catch (ShapeException ex) {
-                System.out.printf("The label \"" + label + "\"\n is too big to fit on line %d. Try a word smaller then %d letters\n", line, height);
-            } catch (DiamondException d) {
-                System.out.print("as you get closer to the top of a diamond it gets smaller and your label is too large for this line height\n");
-            } catch (Exception e) {
-                System.out.print("There is somthing worng with this input please try again\n");
-            }
-        }
     }
 
+    /**
+     * @param label this lets the user set the label
+     */
+    public void setLabel(String label) {
+        int lineWidth = height - line;// this is for readability
+        int halfHeight = height / 2;// this is for readability
+
+        try {
+            if ("diamond".equals(this.shape) && line > halfHeight && label.length() > lineWidth) {
+                throw new DiamondException();
+            } else if (label.length() > line) {
+                throw new ShapeException();
+            } else if (label.equals(" ") || label.equals("") || label.toLowerCase().equals("default")) {
+                this.label = "LU";
+            } else {
+                this.label = label;
+            }
+        } catch (ShapeException ex) {
+            System.out.printf("The label \"" + label + "\"\n is too big to fit on line %d. Try a word smaller then %d letters\n", line, height);
+            setLabel(new Scanner(System.in).nextLine());// Recursion is less efficient but I did this because it is easy to read and fun to do.
+        } catch (DiamondException d) {
+            System.out.print("as you get closer to the top of a diamond it gets smaller and your label is too large for this line height\n");
+            setLabel(new Scanner(System.in).nextLine());// Recursion is less efficient but I did this because it is easy to read and fun to do.
+        } catch (Exception e) {
+            System.out.print("There is somthing worng with this input please retype label\n");
+            setLabel(new Scanner(System.in).nextLine());
+        }
+    }
 }
 
 class ShapeException extends Exception {

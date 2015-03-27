@@ -14,12 +14,10 @@ import java.util.ArrayList;
 class TriangleException extends Exception {
 
     //Parameterless Constructor
-
     public TriangleException() {
     }
 
     //Constructor that accepts a message
-
     public TriangleException(String message) {
         super(message);
     }
@@ -31,13 +29,14 @@ public class Triangle extends Shapes {
         super();
         super.shape = "triangle";
     }
-/**
- * 
- * @param body what the shape is made out of
- * @param line where the label shows up
- * @param label what label is to be shown
- * @param shape the shape to be shown
- */
+
+    /**
+     *
+     * @param body what the shape is made out of
+     * @param line where the label shows up
+     * @param label what label is to be shown
+     * @param shape the shape to be shown
+     */
     Triangle(char body, int line, String label, String shape) {
         super(body, line, label, shape);
     }
@@ -54,12 +53,13 @@ public class Triangle extends Shapes {
 //        }
 //
 //    }
-/**
- * 
- * @param height this is the total height of the shape
- * @param width this is the current height of the shape
- * @return this is a string that holds blank space to center the shape
- */
+
+    /**
+     *
+     * @param height this is the total height of the shape
+     * @param width this is the current height of the shape
+     * @return this is a string that holds blank space to center the shape
+     */
     public String spacer(int height, int width) {
         String s = "";
 
@@ -68,10 +68,11 @@ public class Triangle extends Shapes {
         }
         return s;
     }
-/**
- * 
- * @return The string of the shape
- */
+
+    /**
+     *
+     * @return The string of the shape
+     */
     @Override
     public String toString() {
         String tiangle = "";
@@ -95,7 +96,6 @@ public class Triangle extends Shapes {
                             tiangle += super.getLabel();
                         }
                         tiangle += halfBody(width);
-
                         break;
                     } else {
                         tiangle += super.getBody();
