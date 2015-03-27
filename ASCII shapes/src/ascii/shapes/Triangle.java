@@ -8,8 +8,6 @@ package ascii.shapes;
 /**
  * @author tbrad_000
  */
-
-
 public class Triangle extends Shapes {
 
     Triangle() {
@@ -22,26 +20,28 @@ public class Triangle extends Shapes {
      * @param width this is the current height of the shape
      * @return this is a string that holds blank space to center the shape
      */
-    public String spacer(int height, int width) {
+    public String spacer(int height) {
         String s = "";
 
-        for (int i = 0; i < height - (width); i++) {
+        for (int i = 0; i < height; i++) {
             s += " ";
         }
         return s;
     }
+
     /**
      * @return The string of the shape
      */
     @Override
     public String toString() {
         String tiangle = "";
-
+        String space = spacer(height);
         boolean on = true;
 
         for (int width = 1; width <= height; width++) {
-            tiangle += spacer(height, width);
-
+            
+            tiangle += space.substring(width - 1); // this is much faster. insted of looping (height - width)  every time it just O(1) == string - char
+            
             for (int charCount = 1; charCount < width * 2; charCount++) {
                 if (on) {
                     if (width == super.getLine()) {

@@ -15,10 +15,10 @@ public class Diamond extends Triangle {
         super.shape = "diamond";
     }
 
-/**
- * 
- * @return returns a string of the shape diamond
- */
+    /**
+     *
+     * @return returns a string of the shape diamond
+     */
     @Override
     public String toString() {
         //System.out.print(super.to_String(hight));
@@ -27,10 +27,11 @@ public class Diamond extends Triangle {
         String diamond = super.toString();
         int currHight = (height % 2 == 0) ? halfHight + 1 : halfHight;
         boolean on = true;
+        String space = spacer(halfHight);
 
         for (int width = halfHight; width > 0; width--) {
 
-            diamond += spacer(halfHight, width);
+            diamond += space.substring(width);
 
             for (int charCount = 1; charCount < width * 2; charCount++) {
                 if (on) {
