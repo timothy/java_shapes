@@ -23,9 +23,8 @@ public class GoodShapeInput extends Goodinput {
             }
         } catch (Exception e) {
             System.out.print("There is something wrong with this input please give me a different character again\n");
-            GoodBody(charClean());
+            return GoodBody(charClean());
         }
-        return 'x';
     }
 
     public String GoodShape(String s) {
@@ -38,14 +37,13 @@ public class GoodShapeInput extends Goodinput {
         } catch (ShapeException ex) {
             System.out.printf("The shape of " + s + " is not a valid shape\nplease enter one of the following shapes\n"
                     + "   Diamond\n   Square\n   Triangle\n");
-            GoodShape(super.stringClean().toLowerCase());
-            return "triangle";
+            return GoodShape(super.stringClean().toLowerCase());
         }
     }
 
     public int GoodHeight(int height) {
         try {
-            if (height < 0 || height == 1 || height > 250) {
+            if (height <= 1 || height > 250) {
                 throw new ShapeException();
             } else if (height == 0) {
                 return 10;
@@ -54,14 +52,13 @@ public class GoodShapeInput extends Goodinput {
             }
         } catch (ShapeException ex) {
             System.out.printf("The height of %d is too small or too large\nPlease try something bigger than 1 and less than 250\n", height);
-            GoodHeight(super.intClean());
-            return 10;
+            return GoodHeight(super.intClean());
         }
     }
 
     public int GoodLine(int line, String shape, int height) {
         try {
-            if ("diamond".equals(shape) && height >= line) {
+            if ("diamond".equals(shape) && height <= line) {
                 throw new DiamondException();
             } else if (line > height || line < 0) {
                 throw new ShapeException();
@@ -70,12 +67,10 @@ public class GoodShapeInput extends Goodinput {
             }
         } catch (ShapeException ex) {
             System.out.printf("This shape does not have %d lines\nTry something smaller than %d\n", line, height);
-            GoodLine(super.intClean(), shape, height);
-            return 4;
+            return GoodLine(super.intClean(), shape, height);
         } catch (DiamondException d) {
             System.out.print("as you get closer to the top of a diamond it gets smaller this is the tip of your label try a smaller line\n");
-            GoodLine(super.intClean(), shape, height);
-            return 4;
+            return GoodLine(super.intClean(), shape, height);
         }
     }
 
@@ -87,19 +82,17 @@ public class GoodShapeInput extends Goodinput {
                 throw new DiamondException();
             } else if (label.length() > line) {
                 throw new ShapeException();
-            } else if (label.equals(" ") || label.equals("") || label.toLowerCase().equals("default")) {
+            } else if (label.equals(" ") || label.equals("")) {
                 return "LU";
             } else {
                 return label;
             }
         } catch (ShapeException ex) {
             System.out.printf("The label \"" + label + "\"\n is too big to fit on line %d. Try a word smaller then %d letters\n", line, height);
-            GoodLabel(super.stringClean(), shape, line, height);
-            return "LU";
+            return GoodLabel(super.stringClean(), shape, line, height);
         } catch (DiamondException d) {
             System.out.print("as you get closer to the top of a diamond it gets smaller and your label is too large for this line height\n");
-            GoodLabel(super.stringClean(), shape, line, height);
-            return "LU";
+            return GoodLabel(super.stringClean(), shape, line, height);
         }
     }
 

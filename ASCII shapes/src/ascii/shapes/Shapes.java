@@ -7,10 +7,10 @@ public class Shapes {
 
     protected String shape = ""; // the shape of the ASCII
     protected int height;
-    private char body;// What character the shape is made out of
-    private int line;
-    private String label;
-    private GoodShapeInput clean = new GoodShapeInput();
+    protected char body;// What character the shape is made out of
+    protected int line;
+    protected String label;
+    protected GoodShapeInput clean = new GoodShapeInput();
 
     /**
      * default constructor
@@ -151,6 +151,6 @@ public class Shapes {
      * @param label this lets the user set the label
      */
     public void setLabel(String label) {
-        clean.GoodLabel(label, shape, line, height);
+        this.label = clean.GoodLabel(label, shape, line, height);
     }
 }
