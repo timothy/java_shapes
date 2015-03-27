@@ -22,6 +22,7 @@ public class BuildShapes {
         switch (s) {
             case "y":
             case "ya":
+			case "yep":
             case "yes":
             case "sure":
             case "ok":
