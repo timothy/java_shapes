@@ -34,41 +34,39 @@ public class Triangle extends Shapes {
      */
     @Override
     public String toString() {
-        String tiangle = "";
+        String triangle = "";
         String space = spacer(height);
         boolean on = true;
+        String halfBody = halfBody(height);
+        int count = 1;
+        String fullBody = fullBody(height);
 
         for (int width = 1; width <= height; width++) {
-            
-            tiangle += space.substring(width - 1); // this is much faster. insted of looping (height - width)  every time it just O(1) == string - char
-            
-            for (int charCount = 1; charCount < width * 2; charCount++) {
-                if (on) {
-                    if (width == super.getLine()) {
-                        label(width);
-                        tiangle += halfBody(width);
+            triangle += space.substring(width - 1); // this is much faster. insted of looping (height - width)  every time it just O(1) == string - char
 
-                        if (super.getLine() % 2 == 0) {
-                            tiangle += " ";
-                            tiangle += super.getLabel();
-                            tiangle += " ";
-                        } else {
-                            tiangle += super.getLabel();
-                        }
-                        tiangle += halfBody(width);
-                        break;
-                    } else {
-                        tiangle += super.getBody();
-                    }
-                    on = false;
+            if (line == width) {
+                label(width);
+                halfBody = halfBody(width);
+                if (line % 2 == 0) {
+                    triangle += halfBody;
+                    triangle += super.getLabel();
+                    triangle += halfBody;
                 } else {
-                    tiangle += " ";
-                    on = true;
+                    triangle += halfBody;
+                    triangle += " " + super.getLabel() + " ";
+                    triangle += halfBody;
                 }
+            } else {
+                triangle += fullBody.substring((fullBody.length()) - count);
             }
-            on = true;
-            tiangle += "\n";
+            triangle += "\n";
+            if (count == 18) {
+                count += 1;
+            } else {
+                count += 2;
+            }
         }
-        return tiangle;
+
+        return triangle;
     }
 }

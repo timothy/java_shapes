@@ -28,37 +28,35 @@ public class Diamond extends Triangle {
         int currHight = (height % 2 == 0) ? halfHight + 1 : halfHight;
         boolean on = true;
         String space = spacer(halfHight);
+        String halfBody = "";
+        String fullBody = fullBody(height);
+        int count = fullBody.length();
 
         for (int width = halfHight; width > 0; width--) {
 
-            diamond += space.substring(width);
+            diamond += " " + space.substring(width); // this is much faster. insted of looping (height - width)  every time it just O(1) == string - char
 
-            for (int charCount = 1; charCount < width * 2; charCount++) {
-                if (on) {
-                    if ((currHight) == super.getLine()) {
-
-                        diamond += halfBody(width);
-                        label(width);
-                        if (super.getLine() % 2 != 0) {
-                            diamond += " " + getLabel();
-                            diamond += " ";
-                        } else {
-                            diamond += getLabel();
-                        }
-                        diamond += halfBody(width);
-
-                        break;
-                    } else {
-                        diamond += super.getBody();
-                    }
-                    on = false;
+            if (line == currHight) {
+                label(width);
+                halfBody = halfBody(width);
+                if (line % 2 == 0) {
+                    diamond += halfBody;
+                    diamond += super.getLabel();
+                    diamond += halfBody;
                 } else {
-                    diamond += " ";
-                    on = true;
+                    diamond += halfBody;
+                    diamond += " " + super.getLabel() + " ";
+                    diamond += halfBody;
                 }
+            } else {
+                diamond += fullBody.substring((fullBody.length()) - count);
             }
-            on = true;
             diamond += "\n";
+            if (count == 18) {
+                count -= 1;
+            } else {
+                count -= 2;
+            }
             currHight++;
         }
         return diamond;

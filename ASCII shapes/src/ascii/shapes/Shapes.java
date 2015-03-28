@@ -51,9 +51,27 @@ public class Shapes {
 
         for (int z = 0; z < half; z++) {
             if (on) {
-                s += getBody();
+                s += body;
                 on = false;
             } else if (half - 1 == z) {
+                break;
+            } else {
+                s += " ";
+                on = true;
+            }
+        }
+        return s;
+    }
+    
+    protected String fullBody(int width){
+    boolean on = true;
+        String s = "";
+
+        for (int z = 0; z < width * 2; z++) {
+            if (on) {
+                s += body;
+                on = false;
+            } else if ((width * 2) - 1 == z) {
                 break;
             } else {
                 s += " ";

@@ -17,7 +17,7 @@ public class ASCIIShapes {
      */
     public static void main(String[] args) {
         BuildShapes build = new BuildShapes();
-
+        
         build.buildShapes();
     }
 
