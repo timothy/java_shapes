@@ -21,38 +21,34 @@ public class Diamond extends Triangle {
      */
     @Override
     public String toString() {
-        //System.out.print(super.to_String(hight));
-        height = height / 2;
-        int halfHight = height;
+        height = height / 2;// this is for readability. a diamond will print two triangles so the true height should be half
+        int halfHight = height / 2;
+
         String diamond = super.toString();
+
         int currHight = (height % 2 == 0) ? halfHight + 1 : halfHight;
+
         boolean on = true;
-        String space = spacer(halfHight);
-        String halfBody = "";
-        String fullBody = fullBody(height);
-        int count = fullBody.length();
+
+        int count = super.fullBody.length();
 
         for (int width = halfHight; width > 0; width--) {
 
-            diamond += " " + space.substring(width); // this is much faster. insted of looping (height - width)  every time it just O(1) == string - char
+            diamond += super.space.substring(width); // this is much faster. insted of looping (height - width)  every time it just O(1) == string - char
 
             if (line == currHight) {
-                label(width);
-                halfBody = halfBody(width);
-                if (line % 2 == 0) {
-                    diamond += halfBody;
-                    diamond += super.getLabel();
-                    diamond += halfBody;
-                } else {
-                    diamond += halfBody;
-                    diamond += " " + super.getLabel() + " ";
-                    diamond += halfBody;
-                }
+              //  super.halfBody = halfBody(width);
+
+                diamond += super.halfBody;
+                diamond += super.label;
+                diamond += super.halfBody;
+
             } else {
-                diamond += fullBody.substring((fullBody.length()) - count);
+                diamond += super.fullBody.substring((super.fullBody.length()) - count);
             }
             diamond += "\n";
-            if (count == 18) {
+
+            if (count == super.fullBody.length()) {
                 count -= 1;
             } else {
                 count -= 2;

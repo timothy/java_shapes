@@ -10,6 +10,11 @@ package ascii.shapes;
  */
 public class Triangle extends Shapes {
 
+    protected String halfBody = "";
+    protected String fullBody = "";
+    protected String space = "";
+    protected String label = "";
+
     Triangle() {
         super();
         super.shape = "triangle";
@@ -34,39 +39,31 @@ public class Triangle extends Shapes {
      */
     @Override
     public String toString() {
+        this.fullBody = super.fullBody(super.height);
+        this.space = spacer(super.height);
         String triangle = "";
-        String space = spacer(height);
         boolean on = true;
-        String halfBody = halfBody(height);
         int count = 1;
-        String fullBody = fullBody(height);
 
-        for (int width = 1; width <= height; width++) {
-            triangle += space.substring(width - 1); // this is much faster. insted of looping (height - width)  every time it just O(1) == string - char
+        for (int width = 1; width <= super.height; width++) {
+            triangle += this.space.substring(width - 1); // this is much faster. insted of looping (height - width)  every time it just O(1) == string - char
 
-            if (line == width) {
+            if (super.line == width) {
                 label(width);
-                halfBody = halfBody(width);
-                if (line % 2 == 0) {
-                    triangle += halfBody;
-                    triangle += super.getLabel();
-                    triangle += halfBody;
-                } else {
-                    triangle += halfBody;
-                    triangle += " " + super.getLabel() + " ";
-                    triangle += halfBody;
-                }
+
+                this.halfBody = halfBody(width);
+                this.label = super.getLabel();
+
+                triangle += this.halfBody;
+                triangle += this.label;
+                triangle += this.halfBody;
+
             } else {
-                triangle += fullBody.substring((fullBody.length()) - count);
+                triangle += this.fullBody.substring((this.fullBody.length()) - count);
             }
             triangle += "\n";
-            if (count == 18) {
-                count += 1;
-            } else {
-                count += 2;
-            }
+            count += 2;
         }
-
         return triangle;
     }
 }

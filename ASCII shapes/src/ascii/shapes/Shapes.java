@@ -5,23 +5,22 @@ package ascii.shapes;
  */
 public class Shapes {
 
-
-
     protected String shape = ""; // the shape of the ASCII
     protected int height;
     protected char body;// What character the shape is made out of
     protected int line;
     protected String label;
     protected GoodShapeInput clean = new GoodShapeInput();
+    private ColorClass color = new ColorClass();
 
     /**
      * default constructor
      */
     Shapes() {
         this.body = '8';
-        this.label = "LU";
-        this.line = 4;
-        this.height = 10;
+        this.label = "Kyle is Aswomer";
+        this.line = 20;
+        this.height = 21;
     }
 
     /**
@@ -29,15 +28,38 @@ public class Shapes {
      * @param width this is the current width of the shape
      */
     protected void label(int width) {
+
         String s = "";
         for (int b = 0; b < getLabel().length(); b++) {
-            if (b != (getLabel().length() - 1)) {// if it is not the last char
-                s += getLabel().charAt(b) + " ";
+            if (b != (this.label.length() - 1)) {// if it is not the last char
+                s += this.label.charAt(b) + " ";
             } else {
-                s += getLabel().charAt(b) + "";
+                s += this.label.charAt(b) + "";
             }
         }
-        this.label = s;
+        if (spaceThinker()) {
+            this.label = " " + s + " ";
+        } else {
+            this.label = s;
+        }
+    }
+
+    protected boolean spaceThinker() {
+        boolean even = false;
+        if (this.label.length() % 2 == 0) {
+            even = true;
+        }
+        switch (this.shape) {
+            case "triangle":
+            case "diamond":
+                return ((even == true && this.line % 2 == 0) || (even == false && this.line % 2 != 0));
+            case "square":
+                return (even == true && this.height % 2 == 0);
+
+            default:
+                System.out.print("^_^ Choose any of the following colors ^_^\n");
+                return false;
+        }
     }
 
     /**
@@ -62,6 +84,9 @@ public class Shapes {
                 on = true;
             }
         }
+        //   color.colorPromt();
+        //    this.label = color.colorInput(clean.stringClean()) + this.label + color.ANSI_RESET;
+        this.label = color.colorInput("green") + this.label + color.ANSI_RESET; //debug
         return s;
     }
 

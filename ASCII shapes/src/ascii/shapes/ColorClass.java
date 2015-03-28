@@ -32,6 +32,18 @@ public class ColorClass extends Goodinput {
     public final String ANSI_CYAN = "\u001B[36m";
     public final String ANSI_WHITE = "\u001B[37m";
 
+    public void colorPromt() {
+        System.out.print("^_^ What color would you like your label to be? ^_^\n"
+                + "^_^ BLACK ^_^\n"
+                + "^_^ RED ^_^\n"
+                + "^_^ GREEN ^_^\n"
+                + "^_^ YELLOW ^_^\n"
+                + "^_^ BLUE ^_^\n"
+                + "^_^ PURPLE ^_^\n"
+                + "^_^ CYAN ^_^\n"
+                + "^_^ WHITE ^_^\n");
+    }
+
     public String colorInput(String color) {
         switch (color.toLowerCase()) {
             case "black":
@@ -60,7 +72,7 @@ public class ColorClass extends Goodinput {
                         + "^_^ PURPLE ^_^\n"
                         + "^_^ CYAN ^_^\n"
                         + "^_^ WHITE ^_^\n");
-                return colorInput(super.stringClean().toLowerCase());
+                return colorInput(super.stringClean());
         }
     }
 }

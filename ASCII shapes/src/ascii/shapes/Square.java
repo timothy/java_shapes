@@ -22,36 +22,18 @@ public class Square extends Shapes {
     @Override
     public String toString() {
         String s = "";
-        label(height);
-        if (super.getLine() == 1) {
-            s += super.halfBody(height);
-            s += super.getLabel() + " ";
-            s += super.halfBody(height);
-        }
         String bodyLine = "";
-        for (int i = 0; i < height; i++) {
-            if (height - i == 1) {
-                bodyLine += super.getBody() + "";
-            } else {
-                bodyLine += super.getBody() + " ";
-            }
-        }
-        String temp = bodyLine;
-        int add = 0;
-        if (super.getLine() != 1) {
-            add = height + 1;
-        } else {
-            add = height;
-        }
-        for (int q = 1; q < add; q++) {
-            if (super.getLine() == q && super.getLine() != 1) {
-                s += "\n" + super.halfBody(height) + " ";
+        bodyLine = super.fullBody(super.height);
+        label(height);
+
+        for (int i = 0; i < super.height; i++) {
+            if (super.getLine() == i) {
+                String halfBody = super.halfBody(super.height);
+                s += halfBody;
                 s += super.getLabel();
-                s += " " + super.halfBody(height);
-            } else if (q == 1) {
-                s += temp;
+                s += halfBody + "\n";
             } else {
-                s += "\n" + temp;
+                s += bodyLine + "\n";
             }
         }
         return s + "\n";
