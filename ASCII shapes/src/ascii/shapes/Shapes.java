@@ -5,6 +5,8 @@ package ascii.shapes;
  */
 public class Shapes {
 
+
+
     protected String shape = ""; // the shape of the ASCII
     protected int height;
     protected char body;// What character the shape is made out of
@@ -62,9 +64,9 @@ public class Shapes {
         }
         return s;
     }
-    
-    protected String fullBody(int width){
-    boolean on = true;
+
+    protected String fullBody(int width) {
+        boolean on = true;
         String s = "";
 
         for (int z = 0; z < width * 2; z++) {
