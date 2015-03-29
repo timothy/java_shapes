@@ -21,40 +21,43 @@ public class Diamond extends Triangle {
      */
     @Override
     public String toString() {
-        height = height / 2;// this is for readability. a diamond will print two triangles so the true height should be half
-        int halfHight = height / 2;
+        int count = 0;
+        int halfHeight = super.height / 2;
+        super.height = (super.height % 2 != 0) ? halfHeight + 1 : halfHeight;// if the height is 21 then 1st half of diamond will be 11 an 2nd half will be 10
+
+        int dHeight = height;
 
         String diamond = super.toString();
 
-        int currHight = (height % 2 == 0) ? halfHight + 1 : halfHight;
+        // System.out.printf("cur = %d height = %d",  height);
+        for (int width = halfHeight; width >= 1; width--) {
 
-        boolean on = true;
+            if (height % 2 == 0) {
+                diamond += super.space.substring(--halfHeight) + " ";
+            } else {
+                diamond += super.space.substring(--halfHeight);
+            }
 
-        int count = super.fullBody.length();
+            if (height % 2 == 0 && fullBody.length() == count + 1) {
+                count -= 1;
+            }
 
-        for (int width = halfHight; width > 0; width--) {
+            if (line == ++dHeight) {
+                label(width);
 
-            diamond += super.space.substring(width); // this is much faster. insted of looping (height - width)  every time it just O(1) == string - char
+                this.halfBody = halfBody(width);
+                this.label = super.getLabel();
 
-            if (line == currHight) {
-              //  super.halfBody = halfBody(width);
-
+                
                 diamond += super.halfBody;
                 diamond += super.label;
-                diamond += super.halfBody;
+                diamond += super.halfBody + "\n";
 
             } else {
-                diamond += super.fullBody.substring((super.fullBody.length()) - count);
+                diamond += super.fullBody.substring(count += 2) + "\n";
             }
-            diamond += "\n";
-
-            if (count == super.fullBody.length()) {
-                count -= 1;
-            } else {
-                count -= 2;
-            }
-            currHight++;
         }
-        return diamond;
+        return diamond + "\n";
     }
+
 }

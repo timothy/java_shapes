@@ -19,8 +19,8 @@ public class Shapes {
     Shapes() {
         this.body = '8';
         this.label = "LU";
-        this.line = 20;
-        this.height = 21;
+        this.line = 17;
+        this.height = 20;
     }
 
     /**
@@ -51,6 +51,7 @@ public class Shapes {
         }
         switch (this.shape) {
             case "triangle":
+                return ((even == true && this.line % 2 == 0) || (even == false && this.line % 2 != 0));
             case "diamond":
                 return ((even == true && this.line % 2 == 0) || (even == false && this.line % 2 != 0));
             case "square":
