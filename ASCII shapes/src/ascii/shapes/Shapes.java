@@ -18,7 +18,7 @@ public class Shapes {
      */
     Shapes() {
         this.body = '8';
-        this.label = "Kyle is Aswomer";
+        this.label = "LU";
         this.line = 20;
         this.height = 21;
     }
@@ -54,7 +54,7 @@ public class Shapes {
             case "diamond":
                 return ((even == true && this.line % 2 == 0) || (even == false && this.line % 2 != 0));
             case "square":
-                return (even == true && this.height % 2 == 0);
+                return ((even == true && this.height % 2 == 0) || (even == false && this.height % 2 != 0));
 
             default:
                 System.out.print("^_^ Choose any of the following colors ^_^\n");
