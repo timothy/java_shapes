@@ -12,6 +12,8 @@ public class Shapes {
     protected String label;
     protected GoodShapeInput clean = new GoodShapeInput();
     private ColorClass color = new ColorClass();
+    protected boolean labeleven;
+    int origLabLength = 0;
 
     /**
      * default constructor
@@ -19,8 +21,8 @@ public class Shapes {
     Shapes() {
         this.body = '8';
         this.label = "LU";
-        this.line = 17;
-        this.height = 20;
+        this.line = 4;
+        this.height = 10;
     }
 
     /**
@@ -28,7 +30,7 @@ public class Shapes {
      * @param width this is the current width of the shape
      */
     protected void label(int width) {
-
+        origLabLength = this.label.length();
         String s = "";
         for (int b = 0; b < getLabel().length(); b++) {
             if (b != (this.label.length() - 1)) {// if it is not the last char
@@ -37,28 +39,27 @@ public class Shapes {
                 s += this.label.charAt(b) + "";
             }
         }
-        if (spaceThinker()) {
+        if (spaceThinker(width, origLabLength)) {
             this.label = " " + s + " ";
         } else {
             this.label = s;
         }
     }
 
-    protected boolean spaceThinker() {
-        boolean even = false;
-        if (this.label.length() % 2 == 0) {
-            even = true;
-        }
+    protected boolean spaceThinker(int width, int origLabLength) {
+        labeleven = this.label.length() % 2 == 0;
+        boolean labelEdge = (origLabLength) == (width);
         switch (this.shape) {
             case "triangle":
-                return ((even == true && this.line % 2 == 0) || (even == false && this.line % 2 != 0));
+                return ((labeleven == true && this.line % 2 == 0) || ((labeleven == false && this.line % 2 != 0) && !labelEdge));
             case "diamond":
-                return ((even == true && this.line % 2 == 0) || (even == false && this.line % 2 != 0));
+                return ((labeleven == true && this.line % 2 == 0) || ((labeleven == false && this.line % 2 != 0) && !labelEdge));
+
             case "square":
-                return ((even == true && this.height % 2 == 0) || (even == false && this.height % 2 != 0));
+                return ((labeleven == true && this.height % 2 == 0) || (labeleven == false && this.height % 2 != 0));
 
             default:
-                System.out.print("^_^ Choose any of the following colors ^_^\n");
+                System.out.print("^_^ Something went wrong ^_^\n");
                 return false;
         }
     }

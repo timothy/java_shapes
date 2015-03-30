@@ -15,19 +15,19 @@ public class ASCIIShapes {
      */
     public static void main(String[] args) {
         //debug
-        Triangle t = new Triangle();
-        System.out.print(t.toString());
-
-        Diamond d = new Diamond();
-        System.out.print(d.toString());
-
-        Square s = new Square();
-        System.out.print(s.toString());
+//        Triangle t = new Triangle();
+//        System.out.print(t.toString());
+//
+//        Diamond d = new Diamond();
+//        System.out.print(d.toString());
+//
+//        Square s = new Square();
+//        System.out.print(s.toString());
         //end debug
 
         BuildShapes build = new BuildShapes();
 
-        // build.buildShapes();
+        build.buildShapes();
     }
 
 }
