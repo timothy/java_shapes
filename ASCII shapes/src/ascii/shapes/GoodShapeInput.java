@@ -81,7 +81,11 @@ public class GoodShapeInput extends Goodinput {
             if ("diamond".equals(shape) && line > halfHeight && label.length() > lineWidth) {
                 throw new DiamondException();
             } else if (label.length() > line) {
-                throw new ShapeException();
+                if ("diamond".equals(shape)) {
+                    throw new DiamondException();
+                } else {
+                    throw new ShapeException();
+                }
             } else if (label.equals(" ") || label.equals("")) {
                 return "LU";
             } else {

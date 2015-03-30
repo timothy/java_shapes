@@ -19,10 +19,17 @@ public class Shapes {
      * default constructor
      */
     Shapes() {
-        this.body = '8';
+        this.body = 'X';
         this.label = "LU";
         this.line = 4;
         this.height = 10;
+    }
+
+    Shapes(char body, String label, int line, int height) {
+        this.body = body;
+        this.label = label;
+        this.line = line;
+        this.height = height;
     }
 
     /**
@@ -51,9 +58,9 @@ public class Shapes {
         boolean labelEdge = (origLabLength) == (width);
         switch (this.shape) {
             case "triangle":
-                return ((labeleven == true && this.line % 2 == 0) || ((labeleven == false && this.line % 2 != 0) && !labelEdge));
+                return ((labeleven == true && this.line % 2 == 0 && this.line != 2) || ((labeleven == false && this.line % 2 != 0) && !labelEdge));
             case "diamond":
-                return ((labeleven == true && this.line % 2 == 0) || ((labeleven == false && this.line % 2 != 0) && !labelEdge));
+                return ((labeleven == true && this.line % 2 == 0 && this.line != 2) || ((labeleven == false && this.line % 2 != 0) && !labelEdge));
 
             case "square":
                 return ((labeleven == true && this.height % 2 == 0) || (labeleven == false && this.height % 2 != 0));
@@ -86,9 +93,9 @@ public class Shapes {
                 on = true;
             }
         }
-        //   color.colorPromt();
-        //    this.label = color.colorInput(clean.stringClean()) + this.label + color.ANSI_RESET;
-        this.label = color.colorInput("green") + this.label + color.ANSI_RESET; //debug
+        color.colorPromt();
+        this.label = color.colorInput(clean.stringClean()) + this.label + color.ANSI_RESET;
+//        this.label = color.colorInput("green") + this.label + color.ANSI_RESET; //debug
         return s;
     }
 
