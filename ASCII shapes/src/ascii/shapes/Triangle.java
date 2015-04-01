@@ -27,7 +27,6 @@ public class Triangle extends Shapes {
      */
     public String spacer(int height) {
         String s = "";
-
         for (int i = 0; i < height; i++) {
             s += " ";
         }
@@ -42,7 +41,6 @@ public class Triangle extends Shapes {
         this.fullBody = super.fullBody(super.height);
         this.space = spacer(super.height);
         String triangle = "";
-        boolean on = true;
         int count = 1;
 
         for (int width = 1; width <= super.height; width++) {

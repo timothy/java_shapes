@@ -8,9 +8,13 @@ package ascii.shapes;
 /**
  * @author tbrad_000
  */
-public class Diamond extends Triangle {
+public class Diamond extends Shapes {
 
+    Triangle triangle = new Triangle();
     int trueLabLength = 0;
+    String fullBody = "";
+    String space = "";
+    String halfBody = "";
 
     Diamond() {
         super();
@@ -28,50 +32,35 @@ public class Diamond extends Triangle {
      */
     @Override
     public String toString() {
+        this.height = super.height / 2;
+        this.space = this.triangle.spacer(super.height);
+        this.fullBody = super.fullBody(super.height);
+        this.triangle.height = super.height;
+        String diamond = this.triangle.toString();
         int count = 0;
-        int halfHeight = super.height / 2;
-        int trueHeight = height;
-        super.height = (super.height % 2 != 0) ? halfHeight + 1 : halfHeight;// if the height is 21 then 1st half of diamond will be 11 an 2nd half will be 10
-        int dHeight = height;
-        String diamond = super.toString();
+        int curFullHeight = this.height + 1;
 
-        // System.out.printf("cur = %d height = %d",  height);
-        for (int width = halfHeight; width >= 1; width--) {
+        for (int width = super.height; width > 0; width--) {
+            diamond += this.space.substring(width)+ " ";
 
-            if (trueHeight % 2 == 0) {
-                diamond += super.space.substring(width - 1) + " ";
-            } else {
-                diamond += super.space.substring(width - 1);
-            }
-
-            if (trueHeight % 2 == 0 && fullBody.length() == count + 1) {
-                count -= 1;
-            }
-
-            if (line == ++dHeight) {
-
-                label(width - 1);
+            if (super.line == curFullHeight) {
+                super.line = width;
+                label(width);
 
                 this.halfBody = halfBody(width);
                 this.label = super.getLabel();
 
-                if (((labeleven == true || (labeleven == false && this.line % 2 != 0)) || super.halfBody.length() == 0) || isEdge(width)) {
-                    diamond += super.halfBody;
-                    diamond += super.label;
-                    diamond += super.halfBody + "\n";
-                    count += 2;
-                } else {
-                    diamond += super.halfBody.substring(1);
-                    diamond += super.label;
-                    diamond += super.halfBody.substring(1) + "\n";
-                    count += 2;
-                }
+                diamond += this.halfBody;
+                diamond += this.label;
+                diamond += this.halfBody;
 
             } else {
-                diamond += super.fullBody.substring(count += 2) + "\n";
+                diamond += this.fullBody.substring(count);
             }
+            diamond += "\n";
+            count += 2;
+            curFullHeight++;
         }
-        return diamond + "\n";
+        return diamond;
     }
-
 }
