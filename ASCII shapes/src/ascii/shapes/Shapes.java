@@ -20,7 +20,7 @@ public class Shapes {
      */
     Shapes() {
         this.body = 'X';
-        this.label = "LU0";
+        this.label = "LU";
         this.line = 7;
         this.height = 11;
     }
@@ -93,9 +93,9 @@ public class Shapes {
                 on = true;
             }
         }
-//        color.colorPromt();
-//        this.label = color.colorInput(clean.stringClean()) + this.label + color.ANSI_RESET;
-        this.label = color.colorInput("green") + this.label + color.ANSI_RESET; //debug
+        color.colorPromt();
+        this.label = color.colorInput(clean.stringClean()) + this.label + color.ANSI_RESET;
+//        this.label = color.colorInput("green") + this.label + color.ANSI_RESET; //debug
         return s;
     }
 
