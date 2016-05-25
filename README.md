@@ -10,7 +10,7 @@ The Language that this project uses is Java.
 
 ## Usage
 
-This is a console app. After I compile it I use the NetBeans built in console to go through it. 
+This is a console app. Compile it with NetBeans then use the built in console to go through it!
 
 ## Contributing
 
