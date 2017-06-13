@@ -8,6 +8,9 @@ The IDE used while making this is NetBeans.
 
 The Language that this project uses is Java.
 
+## Where the Main Logic is at
+The File path to where most of my work is [java_shapes/ASCII shapes/src/ascii/shapes/](https://github.com/timothy/java_shapes/tree/master/ASCII%20shapes/src/ascii/shapes)
+
 ## Usage
 
 This is a console app. Compile it with NetBeans then use the built in console to go through it!
