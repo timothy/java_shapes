@@ -25,4 +25,4 @@ This is a console app. Compile it with NetBeans then use the built in console to
 
 ## History
 
-I originally built this to solve a programming problem presented to me for a job interview. I ended up really liking the project and kept it.
+I originally built this to solve a programming challenge presented to me for a job interview. I ended up really liking the project and kept it.
